@@ -1,3 +1,5 @@
+import json
+
 from django.test import TestCase
 
 from ..models import Worker
@@ -32,6 +34,29 @@ class TestWorkerListView(TestCase):
         response = self.client.get('/workers/')
 
         # Then
-        self.assertContains(response, '<li>Kan</li>')
-        self.assertContains(response, '<li>Keng</li>')
+        # self.assertContains(response, '<li>Kan</li>')
+        # self.assertContains(response, '<li>Keng</li>')
+
+        expected = [
+            {
+                'first_name': 'Kan',
+                'last_name': 'Ouivirach',
+                'is_available': True,
+                'primary_phone': '1233451111',
+                'secondary_phone': '19239201',
+                'address': 'Geeky Base',
+            },
+            {
+                'first_name': 'Keng',
+                'last_name': 'Mak',
+                'is_available': False,
+                'primary_phone': '123315111',
+                'secondary_phone': '1923669201',
+                'address': 'Oddstria',
+            }
+        ]
+        self.assertEqual(
+            response.content.decode('utf-8'), 
+            json.dumps(expected)
+        )
         
