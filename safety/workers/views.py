@@ -15,10 +15,10 @@ class WorkerListView(View):
         # for worker in workers:
         #     html += f'<li>{worker.first_name}</li>'
 
-        worker_list = []
-        for worker in workers:
-            worker_list.append(worker.first_name)
+        # worker_list = []
+        # for worker in workers:
+        #     worker_list.append(worker.first_name)
 
         return render(request, 'worker_list.html', {
-            'workers': worker_list
+            'workers': workers
         })
