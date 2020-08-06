@@ -2,10 +2,12 @@ import json
 
 from django.test import TestCase
 
+from rest_framework.test import APITestCase
+
 from ..models import Worker
 
 
-class TestWorkerListView(TestCase):
+class TestWorkerListView(APITestCase):
     def test_view_should_be_accessible(self):
         response = self.client.get('/workers/')
         # print(dir(response))
@@ -37,6 +39,8 @@ class TestWorkerListView(TestCase):
         # self.assertContains(response, '<li>Kan</li>')
         # self.assertContains(response, '<li>Keng</li>')
 
+        # self.maxDiff = None
+
         expected = [
             {
                 'first_name': 'Kan',
@@ -55,8 +59,5 @@ class TestWorkerListView(TestCase):
                 'address': 'Oddstria',
             }
         ]
-        self.assertEqual(
-            response.content.decode('utf-8'), 
-            json.dumps(expected)
-        )
+        self.assertEqual(response.data, expected)
         
