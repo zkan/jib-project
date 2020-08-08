@@ -35,4 +35,3 @@ class TestCovid19ReportView(TestCase):
         }
         response = self.client.get('/covid19-reports/')
         self.assertContains(response, 'NewConfirmed: 50')
-        
