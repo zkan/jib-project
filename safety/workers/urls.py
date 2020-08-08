@@ -18,6 +18,6 @@ from .views import (
 # router.register(r'', WorkerModelViewSetView)
 
 urlpatterns = [
-    path('', WorkerListView.as_view()),
+    path('', WorkerListView.as_view(), name='worker_list'),
     # path('', include(router.urls)),
 ]

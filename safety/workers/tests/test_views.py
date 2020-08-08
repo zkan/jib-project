@@ -1,11 +1,16 @@
+from django.urls import reverse
+
 from rest_framework.test import APITestCase
 
 from ..models import Worker
 
 
 class TestWorkerListView(APITestCase):
+    def setUp(self):
+        self.url = reverse('worker_list')
+
     def test_view_should_be_accessible(self):
-        response = self.client.get('/workers/')
+        response = self.client.get(self.url)
         # print(dir(response))
         self.assertEqual(response.status_code, 200)
 
@@ -29,7 +34,7 @@ class TestWorkerListView(APITestCase):
         )
 
         # When
-        response = self.client.get('/workers/')
+        response = self.client.get(self.url)
 
         # Then
         # self.assertContains(response, '<li>Kan</li>')
