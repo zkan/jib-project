@@ -21,3 +21,15 @@ class WorkerListView(APIView):
         workers = Worker.objects.all()
         serializer = WorkerSerializer(workers, many=True)
         return Response(serializer.data)
+
+
+# from rest_framework import viewsets
+
+
+# class WorkerModelViewSetView(viewsets.ModelViewSet):
+#     queryset = Worker.objects.all()
+#     serializer_class = WorkerSerializer
+
+#     def create(self, request):
+#         print(request.data)
+#         return Response()
