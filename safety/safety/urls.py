@@ -22,7 +22,8 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('workers/', include('workers.urls')),
-    path('covid19-reports/', include('covid19_reports.urls'))
+    path('covid19-reports/', include('covid19_reports.urls')),
+    path('certificates/', include('certificates.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
